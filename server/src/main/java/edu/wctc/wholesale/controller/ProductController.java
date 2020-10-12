@@ -16,10 +16,31 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    @PostMapping("/")
-    public Product createProduct(@RequestBody Product product) {
+    @DeleteMapping("/{productId}")
+    public String deleteProduct(@PathVariable String productId){
+        try {
+            productService.deleteProduct(Integer.parseInt(productId));
+            return "Successfully deleted Product ID: " + productId;
+        } catch (ResourceNotFoundException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage(), e);
+        } catch (NumberFormatException e) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid Product ID: " + productId, e);
+        }
+    }
+
+    @PutMapping("/")
+    public Product updateEvent(@RequestBody Product product) {
         productService.saveProduct(product);
         return product;
+    }
+
+    @PostMapping("/")
+    public Product createProduct(@RequestBody Product product) {
+        product.setId(0);
+        //with id set to zero, hibernate now knows this is a create vs update
+        productService.saveProduct(product);
+        return product;
+        //hibernate will automatically fill in the product id and make it available to send back
     }
 
     @GetMapping("/")
