@@ -15,20 +15,24 @@ public class ProductServiceImpl implements ProductService{
     private ProductRepository productRepository;
 
     // cannot delete product if there are product ordered
+    @Override
     public void deleteProduct(int product_id) {
         productRepository.deleteById(product_id);
     }
 
+    @Override
     public void saveProduct(Product product) {
         productRepository.save(product);
     }
 
+    @Override
     public List<Product> getAllProducts() {
         List<Product> list = new ArrayList<>();
         productRepository.findAll().forEach(list::add);
         return list;
     }
 
+    @Override
     public Product getProduct(int product_id) throws ResourceNotFoundException {
         return productRepository.findById(product_id).orElseThrow(
                 () -> new ResourceNotFoundException("Product", "product_id", product_id));
