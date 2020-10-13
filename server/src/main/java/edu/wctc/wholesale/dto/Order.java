@@ -3,7 +3,6 @@ package edu.wctc.wholesale.dto;
 import lombok.Data;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 @Data
 public class Order {
@@ -13,8 +12,7 @@ public class Order {
     private String productName;
     private String terms;
     private LocalDate shipped;
-    private Double total;
-
+    private double total;
 }
 // below is copied from script.js to ensure field names are the same
 //            tr.append("<td>" + order.customerName + "</td>");

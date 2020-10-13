@@ -10,23 +10,23 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @SpringBootApplication
 public class DistJavaWholesaleApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(DistJavaWholesaleApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(DistJavaWholesaleApplication.class, args);
+    }
 
-	@Bean
-	public WebMvcConfigurer corsConfigurer() {
-		return new WebMvcConfigurer() {
-			@Override
-			public void addCorsMappings (CorsRegistry registry){
-				// address of Intellij's preview server
-				registry.addMapping("/api/**").allowedOrigins("http://localhost:63342");
-			}
-		};
-	}
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                // address of Intellij's preview server
+                registry.addMapping("/api/**").allowedOrigins("http://localhost:63342");
+            }
+        };
+    }
 
-	@Bean
-	public ModelMapper modelMapper() {
-		return new ModelMapper();
-	}
+    @Bean
+    public ModelMapper modelMapper() {
+        return new ModelMapper();
+    }
 }
