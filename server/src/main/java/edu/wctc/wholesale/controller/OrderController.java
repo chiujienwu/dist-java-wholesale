@@ -22,11 +22,14 @@ public class OrderController {
     @Autowired
     private ModelMapper modelMapper;
 
-
     // TODO how do I know if it's working?
     private Order convertToDto(Wholesale_order wholesale_order) {
-        Order order = modelMapper.map(wholesale_order, Order.class);
-        return order;
+//        Order order = modelMapper.map(wholesale_order, Order.class);
+//        return order;
+
+        Order order = new Order();
+        order.setCustomerName(wholesale_order.getCustomer().getName());
+
     }
 
     private Wholesale_order convertToEntity(Order order) {

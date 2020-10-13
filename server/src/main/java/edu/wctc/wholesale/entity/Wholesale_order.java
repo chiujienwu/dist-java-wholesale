@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -19,7 +20,7 @@ public class Wholesale_order {
     private int id;
 
     @Column(name = "purchase_order_num")
-    private String po;
+    private String purchaseOrderNumber;
 
     private String terms;
 
@@ -39,8 +40,20 @@ public class Wholesale_order {
 //        return dateFormat.format(date);
 //    }
 
-    private Date purchase_date;
+    @Column(name="purchase_date")
+    private LocalDate purchaseDate;
 
-    private Date shipped_date;
+    @Column(name="shipped_date")
+    private LocalDate shippedDate;
 
 }
+//    purchase_date timestamp not null,
+//        shipped_date timestamp,
+
+//<td th:text="${order.customer.name}">CUSTOMER NAME</td>
+//<td th:text="${#temporals.format(order.purchaseDate, 'MMM dd yyyy')}">PURCHASE DATE</td>
+//<td th:text="${order.purchaseOrderNumber}">PURCHASE ORDER</td>
+//<td th:text="${order.product.name}">PRODUCT NAME</td>
+//<td th:text="${order.terms}">TERMS</td>
+//<td th:text="${#temporals.format(order.shippedDate, 'MMM dd yyyy')}">SHIPPED DATE</td>
+//<td th:text="${order.product.cost}">PRODUCT COST</td>

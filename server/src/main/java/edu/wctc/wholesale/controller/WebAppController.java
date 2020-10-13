@@ -1,6 +1,8 @@
 package edu.wctc.wholesale.controller;
 
 import edu.wctc.wholesale.entity.Product;
+import edu.wctc.wholesale.entity.Wholesale_order;
+import edu.wctc.wholesale.service.OrderService;
 import edu.wctc.wholesale.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -22,14 +24,14 @@ public class WebAppController {
     }
 
     @Autowired
-    private ProductService productService;
+    private OrderService orderService;
 
     @RequestMapping("/")
     public String index(Model model){
 
-        List<Product> list = new ArrayList<>();
+        List<Wholesale_order> list = new ArrayList<>();
 
-        list = productService.getAllProducts();
+        list = orderService.getAllOrders();
 
         model.addAttribute("orderList", list);
 

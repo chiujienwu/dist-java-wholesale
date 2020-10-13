@@ -1,6 +1,5 @@
 package edu.wctc.wholesale.service;
 
-import edu.wctc.wholesale.entity.Order;
 import edu.wctc.wholesale.entity.Wholesale_order;
 import edu.wctc.wholesale.exception.ResourceNotFoundException;
 

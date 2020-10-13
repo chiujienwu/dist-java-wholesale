@@ -1,8 +1,5 @@
 package edu.wctc.wholesale.repository;
 
-import edu.wctc.wholesale.entity.Customer;
-import edu.wctc.wholesale.entity.Order;
-import edu.wctc.wholesale.entity.Product;
 import edu.wctc.wholesale.entity.Wholesale_order;
 import org.springframework.data.repository.CrudRepository;
 
