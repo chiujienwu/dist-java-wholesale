@@ -5,10 +5,7 @@ import edu.wctc.wholesale.entity.Wholesale_order;
 import edu.wctc.wholesale.service.OrderService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Iterator;
 import java.util.List;
@@ -25,20 +22,25 @@ public class OrderController {
     // TODO how do I know if it's working?
     private Order convertToDto(Wholesale_order wholesale_order) {
 //        Order order = modelMapper.map(wholesale_order, Order.class);
-//        return order;
 
         Order order = new Order();
         order.setCustomerName(wholesale_order.getCustomer().getName());
         order.setDate(wholesale_order.getPurchaseDate());
+        order.setPoNumber(wholesale_order.getPurchaseOrderNumber());
+        order.setProductName(wholesale_order.getProduct().getName());
+        order.setTerms(wholesale_order.getTerms());
+        order.setShipped(wholesale_order.getShippedDate());
+        order.setTotal(wholesale_order.getProduct().getCost());
 
-        tr.append("<td>" + order.customerName + "</td>");
-        tr.append("<td>" + order.date + "</td>");
-        tr.append("<td>" + order.poNumber + "</td>");
-        tr.append("<td>" + order.productName + "</td>");
-        tr.append("<td>" + order.terms + "</td>");
-        tr.append("<td>" + order.shipped + "</td>");
-        tr.append("<td>" + order.total + "</td>");
-
+//        copied from script.js
+//        tr.append("<td>" + order.customerName + "</td>");
+//        tr.append("<td>" + order.date + "</td>");
+//        tr.append("<td>" + order.poNumber + "</td>");
+//        tr.append("<td>" + order.productName + "</td>");
+//        tr.append("<td>" + order.terms + "</td>");
+//        tr.append("<td>" + order.shipped + "</td>");
+//        tr.append("<td>" + order.total + "</td>");
+        return order;
     }
 
     private Wholesale_order convertToEntity(Order order) {
@@ -48,7 +50,7 @@ public class OrderController {
         return wholesale_order;
     }
 
-    @PostMapping("/")
+    @GetMapping("/")
     public List<Order> getAllOrders() {
         //convert List of WholeSaleOrders to List of Orders
         List<Wholesale_order> wList = orderService.getAllOrders();
@@ -60,4 +62,5 @@ public class OrderController {
         }
         return oList;
     }
+
 }
