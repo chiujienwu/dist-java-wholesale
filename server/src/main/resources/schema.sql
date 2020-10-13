@@ -32,3 +32,20 @@ create table wholesale_order
     constraint order_product_product_id_fk
         foreign key (product_id) references product (product_id)
 );
+
+CREATE VIEW orderview AS
+(
+SELECT c.name as customerName,
+w.purchase_date as p_date,
+w.purchase_order_num as poNumber,
+p.name as productName,
+w.terms as terms,
+w.shipped_date as shipped,
+p.cost as total
+FROM wholesale_order as w
+INNER JOIN customer as c
+ON w.customer_id = c.customer_id
+INNER JOIN product as p
+ON w.product_id = p.product_id
+);
+

@@ -15,9 +15,9 @@ public class OrderServiceImpl implements OrderService {
     private OrderRepository orderRepository;
 
     // Not sure we need this since a customer can order the same product again
-    public boolean isOrdered(Wholesale_order wholesaleOrder) {
-        return orderRepository.existsByCustomerAndProduct(wholesaleOrder.getCustomer(), wholesaleOrder.getProduct());
-    }
+//    public boolean isOrdered(Wholesale_order wholesaleOrder) {
+//        return orderRepository.existsByCustomerAndProduct(wholesaleOrder.getCustomer(), wholesaleOrder.getProduct());
+//    }
 
     @Override
     public List<Wholesale_order> getAllOrders() {

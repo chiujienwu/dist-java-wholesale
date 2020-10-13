@@ -22,6 +22,8 @@ public class OrderController {
     @Autowired
     private ModelMapper modelMapper;
 
+
+    // TODO how do I know if it's working?
     private Order convertToDto(Wholesale_order wholesale_order) {
         Order order = modelMapper.map(wholesale_order, Order.class);
         return order;
@@ -34,7 +36,7 @@ public class OrderController {
 
     @PostMapping("/")
     public List<Order> getAllOrders() {
-        //TODO convert List of WholeSaleOrders to List of Orders
+        //convert List of WholeSaleOrders to List of Orders
         List<Wholesale_order> wList = orderService.getAllOrders();
         List<Order> oList = null;
         Iterator<Wholesale_order> wholesale_orderIterator = wList.iterator();

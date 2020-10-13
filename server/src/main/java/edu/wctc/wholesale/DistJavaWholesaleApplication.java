@@ -20,7 +20,7 @@ public class DistJavaWholesaleApplication {
 			@Override
 			public void addCorsMappings (CorsRegistry registry){
 				// address of Intellij's preview server
-				registry.addMapping("/api/orders/**").allowedOrigins("http://localhost:63342");
+				registry.addMapping("/api/**").allowedOrigins("http://localhost:63342");
 			}
 		};
 	}
