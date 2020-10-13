@@ -15,7 +15,6 @@ public class Customer {
     @Column(name = "customer_id")
     private int id;
 
-//    @Column(name = "name")
     private String name;
 
 }

@@ -29,11 +29,22 @@ public class OrderController {
 
         Order order = new Order();
         order.setCustomerName(wholesale_order.getCustomer().getName());
+        order.setDate(wholesale_order.getPurchaseDate());
+
+        tr.append("<td>" + order.customerName + "</td>");
+        tr.append("<td>" + order.date + "</td>");
+        tr.append("<td>" + order.poNumber + "</td>");
+        tr.append("<td>" + order.productName + "</td>");
+        tr.append("<td>" + order.terms + "</td>");
+        tr.append("<td>" + order.shipped + "</td>");
+        tr.append("<td>" + order.total + "</td>");
 
     }
 
     private Wholesale_order convertToEntity(Order order) {
         Wholesale_order wholesale_order = modelMapper.map(order, Wholesale_order.class);
+        //TODO set appropriate getter/setter combinations
+        //ambiguity flag set to true
         return wholesale_order;
     }
 
@@ -49,5 +60,4 @@ public class OrderController {
         }
         return oList;
     }
-
 }

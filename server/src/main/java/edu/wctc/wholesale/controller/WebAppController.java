@@ -33,6 +33,7 @@ public class WebAppController {
 
         list = orderService.getAllOrders();
 
+        // name of attribute must match what is used in the thymeleaf template
         model.addAttribute("orderList", list);
 
         return "index";
