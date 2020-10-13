@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/orders")
@@ -50,17 +51,22 @@ public class OrderController {
         return wholesale_order;
     }
 
+//    @GetMapping("/")
+//    public List<Order> getAllOrders() {
+//        //convert List of WholeSaleOrders to List of Orders
+//        List<Wholesale_order> wList = orderService.getAllOrders();
+//        List<Order> oList = null;
+//        Iterator<Wholesale_order> wholesale_orderIterator = wList.iterator();
+//        while (wholesale_orderIterator.hasNext()) {
+//            Order order = convertToDto(wholesale_orderIterator.next());
+//            oList.add(order);
+//        }
+//        return oList;
+//    }
+
     @GetMapping("/")
     public List<Order> getAllOrders() {
-        //convert List of WholeSaleOrders to List of Orders
-        List<Wholesale_order> wList = orderService.getAllOrders();
-        List<Order> oList = null;
-        Iterator<Wholesale_order> wholesale_orderIterator = wList.iterator();
-        while (wholesale_orderIterator.hasNext()) {
-            Order order = convertToDto(wholesale_orderIterator.next());
-            oList.add(order);
-        }
-        return oList;
+        return orderService.getAllOrders().stream()
+                .map(this::convertToDto).collect(Collectors.toList());
     }
-
 }
